@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta autor>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="css/otro/auth.css">
+    <link rel="stylesheet" href="css/todos/mensajes.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="login-wrapper">
+            <div class="login-card">
+                <div class="header">
+                    <h1>Iniciar Sesión</h1>
+                    <p class="welcome">¡Te damos la bienvenida!</p>
+                </div>
+                <form class="login-form">
+                    <div class="form-group">
+                        <label for="username" class="form-label">
+                            <strong>Usuario:</strong>
+                        </label>
+                        <input type="text" 
+                               id="username" 
+                               class="form-input" 
+                               placeholder="ejemplo@email.com o +506 63084229">
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="form-label">
+                        <strong>Contraseña:</strong>
+                        </label>
+                        <div class="password-input">
+                            <input type="password" 
+                                   id="password" 
+                                   class="form-input" 
+                                   placeholder="Ingresa tu contraseña">
+                            <button type="button" class="toggle-password" id="togglePassword">
+                                <i class="far fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <span>Continuar</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <div class="separator">
+                    <span>o continúa con</span>
+                </div>
+
+                <div class="social-login">
+                    <button type="button" class="btn btn-social btn-google">
+                        <i class="fab fa-google"></i>
+                        <span>Continuar con Google</span>
+                    </button>
+
+                    <button type="button" class="btn btn-social btn-apple">
+                        <i class="fab fa-apple"></i>
+                        <span>Continuar con Apple</span>
+                    </button>
+
+                    <button type="button" class="btn btn-social btn-facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        <span>Continuar con Facebook</span>
+                    </button>
+                </div>
+
+                <div class="footer-links">
+                    <p class="signup-link">
+                        ¿No tienes cuenta? 
+                        <a href="html/usuario/CUsuario.html" class="link">Crear Usuario</a>
+                    </p>
+                    <p class="host-link">
+                        ¿Quieres ofrecer tus servicios?
+                        <a href="html/anfitrion/CAnfitrionUbicacion.html" class="link">Hacete Anfitrión</a>
+                    </p>
+                </div>
+
+                <div class="terms">
+                    <p>Al continuar, aceptas nuestros 
+                        <a href="TerminosDeServicio.html">Términos de Servicio</a> y 
+                        <a href="PoliticaDePrivacidad.html">Política de Privacidad</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/otro/iniciosesion.js"></script>
+</body>
+</html>
