@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Anfitrión</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/todos/styles.css">
+    <link rel="stylesheet" href="../../css/todos/mensajes.css">
+    <link rel="stylesheet" href="../../css/anfitrion/indexAnfitrion.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo-container">
+                <i class="fas fa-home"></i>
+                <span>Nombre Anfitrion</span>
+            </div>
+
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="#dashboard" class="nav-link active">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#habitaciones-disponibles" class="nav-link">
+                        <i class="fas fa-bed"></i>
+                        <span>Mis Habitaciones</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#habitaciones-ocupadas" class="nav-link">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Reservaciones</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#agregar-habitacion" class="nav-link" id="btn-crear-habitacion">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Agregar Habitación</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="user-profile">
+                <div class="user-avatar">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="user-info">
+                    <span class="user-name">Anfitrión</span>
+                    <span class="user-email">anfitrion@ejemplo.com</span>
+                </div>
+                <button class="btn-logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <h1>Panel de Anfitrión</h1>
+                    <p class="welcome-text">Bienvenido de nuevo, aquí puedes gestionar tus propiedades</p>
+                </div>
+                <div class="header-right">
+                    <button class="btn btn-primary" id="btn-actividades">
+                        <i class="fas fa-plus"></i>
+                        Agregar Actividades de recreacion
+                    </button>
+                    <div class="notifications">
+                        <button class="btn-notification">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-count">3</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Sección Dashboard -->
+            <section id="dashboard">
+                <!-- Estadísticas Rápidas -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #e3f2fd;">
+                            <i class="fas fa-home" style="color: #1976d2;"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value">5</span>
+                            <span class="stat-label">Propiedades Activas</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #e8f5e9;">
+                            <i class="fas fa-calendar-check" style="color: #388e3c;"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value">12</span>
+                            <span class="stat-label">Reservas Activas</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #fff3e0;">
+                            <i class="fas fa-star" style="color: #f57c00;"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value">4.8</span>
+                            <span class="stat-label">Calificación Promedio</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-icon" style="background: #f3e5f5;">
+                            <i class="fas fa-dollar-sign" style="color: #7b1fa2;"></i>
+                        </div>
+                        <div class="stat-info">
+                            <span class="stat-value">$2,450</span>
+                            <span class="stat-label">Ingresos Mensuales</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carrusel de propiedades destacadas -->
+                <div class="featured-swiper swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide featured-slide">
+                            <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=1200&h=400&fit=crop"
+                                alt="Casa en la playa">
+                            <div class="featured-info">
+                                <h3>Casa frente al mar con piscina</h3>
+                                <p>Propiedad mejor calificada - 4.9 ⭐</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide featured-slide">
+                            <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1200&h=400&fit=crop"
+                                alt="Villa de lujo">
+                            <div class="featured-info">
+                                <h3>Villa Premium con Jacuzzi</h3>
+                                <p>Mayores ingresos este mes - $1,200</p>
+                            </div>
+                        </div>
+                        <div class="swiper-slide featured-slide">
+                            <img src="https://images.unsplash.com/photo-1549294413-26f195200c16?w=1200&h=400&fit=crop"
+                                alt="Apartamento moderno">
+                            <div class="featured-info">
+                                <h3>Departamento Vista al Océano</h3>
+                                <p>Disponible ahora - 95% ocupación</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Botones de navegación -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <!-- Paginación -->
+                    <div class="swiper-pagination"></div>
+                </div>
+
+                <!-- Grid de contenido principal -->
+                <div class="dashboard-content-grid">
+
+                    <!-- Actividades de Recreación -->
+                    <div class="dashboard-section activities-section">
+                        <!-- Estadísticas de Actividades -->
+                        <div class="dashboard-section activities-stats">
+                            <div class="section-header">
+                                <h3>Estadísticas de Actividades</h3>
+                            </div>
+                            <div class="stats-mini-grid">
+                                <div class="mini-stat">
+                                    <div class="mini-stat-icon">
+                                        <i class="fas fa-heart" style="color: #e91e63;"></i>
+                                    </div>
+                                    <div class="mini-stat-info">
+                                        <span class="mini-stat-value">85%</span>
+                                        <span class="mini-stat-label">Satisfacción</span>
+                                    </div>
+                                </div>
+                                <div class="mini-stat">
+                                    <div class="mini-stat-icon">
+                                        <i class="fas fa-calendar" style="color: #2196f3;"></i>
+                                    </div>
+                                    <div class="mini-stat-info">
+                                        <span class="mini-stat-value">47</span>
+                                        <span class="mini-stat-label">Reservas</span>
+                                    </div>
+                                </div>
+                                <div class="mini-stat">
+                                    <div class="mini-stat-icon">
+                                        <i class="fas fa-chart-line" style="color: #4caf50;"></i>
+                                    </div>
+                                    <div class="mini-stat-info">
+                                        <span class="mini-stat-value">+23%</span>
+                                        <span class="mini-stat-label">Crecimiento</span>
+                                    </div>
+                                </div>
+                                <div class="mini-stat">
+                                    <div class="mini-stat-icon">
+                                        <i class="fas fa-dollar-sign" style="color: #ff9800;"></i>
+                                    </div>
+                                    <div class="mini-stat-info">
+                                        <span class="mini-stat-value">$850</span>
+                                        <span class="mini-stat-label">Ingresos</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="activities-chart">
+                                <h4>Actividades más populares</h4>
+                                <div class="chart-bars">
+                                    <div class="chart-bar">
+                                        <div class="bar-label">Piscina</div>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 95%; background: #4caf50;"></div>
+                                        </div>
+                                        <div class="bar-value">95%</div>
+                                    </div>
+                                    <div class="chart-bar">
+                                        <div class="bar-label">Bicicleta</div>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 78%; background: #2196f3;"></div>
+                                        </div>
+                                        <div class="bar-value">78%</div>
+                                    </div>
+                                    <div class="chart-bar">
+                                        <div class="bar-label">Spa</div>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 65%; background: #9c27b0;"></div>
+                                        </div>
+                                        <div class="bar-value">65%</div>
+                                    </div>
+                                    <div class="chart-bar">
+                                        <div class="bar-label">Cocina</div>
+                                        <div class="bar-container">
+                                            <div class="bar-fill" style="width: 52%; background: #ff9800;"></div>
+                                        </div>
+                                        <div class="bar-value">52%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="activities-list">
+                            <!-- Actividad 1 -->
+                            <h3>Actividades de Recreación</h3>
+                            <div class="activity-card">
+                                <div class="activity-icon" style="background: #e8f5e9;">
+                                    <i class="fas fa-swimming-pool" style="color: #388e3c;"></i>
+                                </div>
+                                <div class="activity-info">
+                                    <h4>Piscina Infinita</h4>
+                                    <p class="activity-desc">Acceso ilimitado para huéspedes</p>
+                                    <div class="activity-meta">
+                                        <span class="meta-item">
+                                            <i class="fas fa-clock"></i>
+                                            8:00 AM - 10:00 PM
+                                        </span>
+                                        <span class="meta-item">
+                                            <i class="fas fa-users"></i>
+                                            Incluido
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="activity-status">
+                                    <span class="status-badge active">Activa</span>
+                                    <div class="activity-actions">
+                                        <button class="btn-action small">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Actividad 2 -->
+                            <div class="activity-card">
+                                <div class="activity-icon" style="background: #fff3e0;">
+                                    <i class="fas fa-biking" style="color: #f57c00;"></i>
+                                </div>
+                                <div class="activity-info">
+                                    <h4>Tour en Bicicleta</h4>
+                                    <p class="activity-desc">Recorrido por la zona costera</p>
+                                    <div class="activity-meta">
+                                        <span class="meta-item">
+                                            <i class="fas fa-clock"></i>
+                                            9:00 AM - 5:00 PM
+                                        </span>
+                                        <span class="meta-item">
+                                            <i class="fas fa-dollar-sign"></i>
+                                            $15/persona
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="activity-status">
+                                    <span class="status-badge active">Activa</span>
+                                    <div class="activity-actions">
+                                        <button class="btn-action small">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Actividad 3 -->
+                            <div class="activity-card">
+                                <div class="activity-icon" style="background: #f3e5f5;">
+                                    <i class="fas fa-spa" style="color: #7b1fa2;"></i>
+                                </div>
+                                <div class="activity-info">
+                                    <h4>Spa y Masajes</h4>
+                                    <p class="activity-desc">Servicios de relajación</p>
+                                    <div class="activity-meta">
+                                        <span class="meta-item">
+                                            <i class="fas fa-clock"></i>
+                                            10:00 AM - 8:00 PM
+                                        </span>
+                                        <span class="meta-item">
+                                            <i class="fas fa-dollar-sign"></i>
+                                            Desde $40
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="activity-status">
+                                    <span class="status-badge active">Activa</span>
+                                    <div class="activity-actions">
+                                        <button class="btn-action small">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Actividad 4 -->
+                            <div class="activity-card">
+                                <div class="activity-icon" style="background: #e3f2fd;">
+                                    <i class="fas fa-utensils" style="color: #1976d2;"></i>
+                                </div>
+                                <div class="activity-info">
+                                    <h4>Clases de Cocina</h4>
+                                    <p class="activity-desc">Cocina local tradicional</p>
+                                    <div class="activity-meta">
+                                        <span class="meta-item">
+                                            <i class="fas fa-clock"></i>
+                                            3:00 PM - 6:00 PM
+                                        </span>
+                                        <span class="meta-item">
+                                            <i class="fas fa-dollar-sign"></i>
+                                            $25/persona
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="activity-status">
+                                    <span class="status-badge pending">Por aprobar</span>
+                                    <div class="activity-actions">
+                                        <button class="btn-action small">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-outline btn-block">
+                            Ver todas las actividades
+                        </button>
+                        <button class="btn btn-primary btn-sm" id="btn-actividades">
+                            <i class="fas fa-plus"></i>
+                            Agregar
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección: Habitaciones Disponibles -->
+            <section id="habitaciones-disponibles" class="rooms-section">
+                <div class="section-header">
+                    <h2>Habitaciones Disponibles</h2>
+                    <div class="section-actions">
+                        <button class="btn btn-outline">
+                            <i class="fas fa-filter"></i>
+                            Filtrar
+                        </button>
+                        <button class="btn btn-outline">
+                            <i class="fas fa-sort"></i>
+                            Ordenar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="rooms-grid">
+                    <!-- Habitación 1 con Carrusel -->
+                    <div class="room-card">
+                        <div class="room-image">
+                            <div class="swiper room-images-swiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=400&h=250&fit=crop"
+                                            alt="Vista frontal de la casa" loading="lazy">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=250&fit=crop"
+                                            alt="Piscina" loading="lazy">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="https://images.unsplash.com/photo-1582268611958-ebfd161ef9cf?w=400&h=250&fit=crop"
+                                            alt="Interior" loading="lazy">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="https://images.unsplash.com/photo-1613977257363-707ba9348227?w=400&h=250&fit=crop"
+                                            alt="Vista al mar" loading="lazy">
+                                    </div>
+                                </div>
+                                <!-- Botones de navegación -->
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                                <!-- Paginación -->
+                                <div class="swiper-pagination"></div>
+                            </div>
+                            <span class="room-status available">Disponible</span>
+                        </div>
+                        <div class="room-info">
+                            <h3 class="room-title">Casa frente al mar con piscina</h3>
+                            <div class="room-details">
+                                <span class="detail">
+                                    <i class="fas fa-users"></i>
+                                    3 huéspedes
+                                </span>
+                                <span class="detail">
+                                    <i class="fas fa-bed"></i>
+                                    2 camas
+                                </span>
+                                <span class="detail">
+                                    <i class="fas fa-bath"></i>
+                                    1 baño
+                                </span>
+                                <span class="detail">
+                                    <i class="fas fa-image"></i>
+                                    4 fotos
+                                </span>
+                            </div>
+                            <div class="room-price">
+                                <span class="price">$120</span>
+                                <span class="period"> / noche</span>
+                            </div>
+                            <div class="room-actions">
+                                <button class="btn-action edit" 
+                                        data-habitacion-id="1"
+                                        data-habitacion-nombre="Casa frente al mar con piscina"
+                                        data-habitacion-precio="120"
+                                        data-habitacion-capacidad="3"
+                                        data-habitacion-camas="2"
+                                        data-habitacion-banos="1"
+                                        data-habitacion-fotos="4"
+                                        data-habitacion-estado="disponible"
+                                        data-accion="editar">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn-action delete" 
+                                        data-habitacion-id="1"
+                                        data-habitacion-nombre="Casa frente al mar con piscina"
+                                        data-accion="eliminar">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                                <button class="btn-action view" 
+                                        data-habitacion-id="1"
+                                        data-habitacion-nombre="Casa frente al mar con piscina"
+                                        data-habitacion-precio="120"
+                                        data-habitacion-capacidad="3"
+                                        data-habitacion-camas="2"
+                                        data-habitacion-banos="1"
+                                        data-habitacion-fotos="4"
+                                        data-habitacion-estado="disponible"
+                                        data-accion="ver">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Habitación 2 con Carrusel -->
+                    <div class="room-card">
+                        <div class="room-image">
+                            <div class="swiper room-images-swiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img src="https://images.unsplash.com/photo-1549294413-26f195200c16?w=400&h=250&fit=crop"
+                                            alt="Vista del departamento" loading="lazy">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=250&fit=crop"
+                                            alt="Sala" loading="lazy">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?w=400&h=250&fit=crop"
+                                            alt="Cocina" loading="lazy">
+                                    </div>
+                                </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                            <span class="room-status available">Disponible</span>
+                        </div>
+                        <div class="room-info">
+                            <h3 class="room-title">Departamento vista al océano</h3>
+                            <div class="room-details">
+                                <span class="detail">
+                                    <i class="fas fa-users"></i>
+                                    4 huéspedes
+                                </span>
+                                <span class="detail">
+                                    <i class="fas fa-bed"></i>
+                                    3 camas
+                                </span>
+                                <span class="detail">
+                                    <i class="fas fa-bath"></i>
+                                    1.5 baños
+                                </span>
+                                <span class="detail">
+                                    <i class="fas fa-image"></i>
+                                    3 fotos
+                                </span>
+                            </div>
+                            <div class="room-price">
+                                <span class="price">$95</span>
+                                <span class="period"> / noche</span>
+                            </div>
+                            <div class="room-actions">
+                                <button class="btn-action edit" 
+                                        data-habitacion-id="2"
+                                        data-habitacion-nombre="Departamento vista al océano"
+                                        data-habitacion-precio="95"
+                                        data-habitacion-capacidad="4"
+                                        data-habitacion-camas="3"
+                                        data-habitacion-banos="1.5"
+                                        data-habitacion-fotos="3"
+                                        data-habitacion-estado="disponible"
+                                        data-accion="editar">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn-action delete" 
+                                        data-habitacion-id="2"
+                                        data-habitacion-nombre="Departamento vista al océano"
+                                        data-accion="eliminar">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                                <button class="btn-action view" 
+                                        data-habitacion-id="2"
+                                        data-habitacion-nombre="Departamento vista al océano"
+                                        data-habitacion-precio="95"
+                                        data-habitacion-capacidad="4"
+                                        data-habitacion-camas="3"
+                                        data-habitacion-banos="1.5"
+                                        data-habitacion-fotos="3"
+                                        data-habitacion-estado="disponible"
+                                        data-accion="ver">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Habitación 3 con Carrusel -->
+                    <div class="room-card">
+                        <div class="room-image">
+                            <div class="swiper room-images-swiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=400&h=250&fit=crop"
+                                            alt="Cabaña exterior" loading="lazy">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?w=400&h=250&fit=crop"
+                                            alt="Interior cabaña" loading="lazy">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="https://images.unsplash.com/photo-1518780664697-55e3ad937233?w=400&h=250&fit=crop"
+                                            alt="Terraza" loading="lazy">
+                                    </div>
+                                </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                            <span class="room-status booked">Reservada</span>
+                        </div>
+                        <div class="room-info">
+                            <h3 class="room-title">Cabaña en la selva tropical</h3>
+                            <div class="room-details">
+                                <span class="detail">
+                                    <i class="fas fa-users"></i>
+                                    2 huéspedes
+                                </span>
+                                <span class="detail">
+                                    <i class="fas fa-bed"></i>
+                                    1 cama
+                                </span>
+                                <span class="detail">
+                                    <i class="fas fa-bath"></i>
+                                    1 baño
+                                </span>
+                                <span class="detail">
+                                    <i class="fas fa-image"></i>
+                                    3 fotos
+                                </span>
+                            </div>
+                            <div class="room-price">
+                                <span class="price">$75</span>
+                                <span class="period"> / noche</span>
+                            </div>
+                            <div class="room-actions">
+                                <button class="btn-action edit" 
+                                        data-habitacion-id="3"
+                                        data-habitacion-nombre="Cabaña en la selva tropical"
+                                        data-habitacion-precio="75"
+                                        data-habitacion-capacidad="2"
+                                        data-habitacion-camas="1"
+                                        data-habitacion-banos="1"
+                                        data-habitacion-fotos="3"
+                                        data-habitacion-estado="reservada"
+                                        data-accion="editar">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn-action delete" 
+                                        data-habitacion-id="3"
+                                        data-habitacion-nombre="Cabaña en la selva tropical"
+                                        data-accion="eliminar">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                                <button class="btn-action view" 
+                                        data-habitacion-id="3"
+                                        data-habitacion-nombre="Cabaña en la selva tropical"
+                                        data-habitacion-precio="75"
+                                        data-habitacion-capacidad="2"
+                                        data-habitacion-camas="1"
+                                        data-habitacion-banos="1"
+                                        data-habitacion-fotos="3"
+                                        data-habitacion-estado="reservada"
+                                        data-accion="ver">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Habitación 4 con Carrusel -->
+                    <div class="room-card">
+                        <div class="room-image">
+                            <div class="swiper room-images-swiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=400&h=250&fit=crop"
+                                            alt="Villa exterior" loading="lazy">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=400&h=250&fit=crop"
+                                            alt="Jacuzzi" loading="lazy">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="https://images.unsplash.com/photo-1613977257592-4871e5fcd7c4?w=400&h=250&fit=crop"
+                                            alt="Piscina villa" loading="lazy">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=400&h=250&fit=crop"
+                                            alt="Sala de estar" loading="lazy">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=250&fit=crop"
+                                            alt="Habitación principal" loading="lazy">
+                                    </div>
+                                </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                            <span class="room-status available">Disponible</span>
+                        </div>
+                        <div class="room-info">
+                            <h3 class="room-title">Villa con jacuzzi y vista</h3>
+                            <div class="room-details">
+                                <span class="detail">
+                                    <i class="fas fa-users"></i>
+                                    8 huéspedes
+                                </span>
+                                <span class="detail">
+                                    <i class="fas fa-bed"></i>
+                                    6 camas
+                                </span>
+                                <span class="detail">
+                                    <i class="fas fa-bath"></i>
+                                    3 baños
+                                </span>
+                                <span class="detail">
+                                    <i class="fas fa-image"></i>
+                                    5 fotos
+                                </span>
+                            </div>
+                            <div class="room-price">
+                                <span class="price">$320</span>
+                                <span class="period"> / noche</span>
+                            </div>
+                            <div class="room-actions">
+                                <button class="btn-action edit" 
+                                        data-habitacion-id="4"
+                                        data-habitacion-nombre="Villa con jacuzzi y vista"
+                                        data-habitacion-precio="320"
+                                        data-habitacion-capacidad="8"
+                                        data-habitacion-camas="6"
+                                        data-habitacion-banos="3"
+                                        data-habitacion-fotos="5"
+                                        data-habitacion-estado="disponible"
+                                        data-accion="editar">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn-action delete" 
+                                        data-habitacion-id="4"
+                                        data-habitacion-nombre="Villa con jacuzzi y vista"
+                                        data-accion="eliminar">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                                <button class="btn-action view" 
+                                        data-habitacion-id="4"
+                                        data-habitacion-nombre="Villa con jacuzzi y vista"
+                                        data-habitacion-precio="320"
+                                        data-habitacion-capacidad="8"
+                                        data-habitacion-camas="6"
+                                        data-habitacion-banos="3"
+                                        data-habitacion-fotos="5"
+                                        data-habitacion-estado="disponible"
+                                        data-accion="ver">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección: Habitaciones Ocupadas -->
+            <section id="habitaciones-ocupadas" class="rooms-section">
+                <div class="section-header">
+                    <h2>Habitaciones Ocupadas</h2>
+                    <div class="section-actions">
+                        <button class="btn btn-outline">
+                            <i class="fas fa-download"></i>
+                            Exportar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="rooms-table-container">
+                    <table class="rooms-table">
+                        <thead>
+                            <tr>
+                                <th>Habitación</th>
+                                <th>Huésped</th>
+                                <th>Fecha de Entrada</th>
+                                <th>Fecha de Salida</th>
+                                <th>Total</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="room-cell">
+                                        <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=50&h=50&fit=crop"
+                                            alt="Cabaña">
+                                        <span>Cabaña Selva</span>
+                                    </div>
+                                </td>
+                                <td>María Rodríguez</td>
+                                <td>15/11/2024</td>
+                                <td>20/11/2024</td>
+                                <td>$375</td>
+                                <td>
+                                    <span class="status-badge active">Activa</span>
+                                </td>
+                                <td>
+                                    <button class="btn-action small">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn-action small">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="room-cell">
+                                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=50&h=50&fit=crop"
+                                            alt="Bungalow">
+                                        <span>Bungalow Playa</span>
+                                    </div>
+                                </td>
+                                <td>Carlos Sánchez</td>
+                                <td>10/11/2024</td>
+                                <td>18/11/2024</td>
+                                <td>$680</td>
+                                <td>
+                                    <span class="status-badge pending">Pendiente</span>
+                                </td>
+                                <td>
+                                    <button class="btn-action small">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn-action small">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Sección: Agregar Habitación (Nueva) -->
+            <section id="agregar-habitacion" class="add-room-section">
+                <div class="section-header">
+                    <h2>Agregar Nueva Habitación</h2>
+                </div>
+                <div class="add-room-content">
+                    <button class="btn btn-primary btn-lg" id="btn-crear-nueva-habitacion">
+                        <i class="fas fa-plus-circle"></i>
+                        Crear Nueva Habitación
+                    </button>
+                    <p class="add-room-description">
+                        Haz clic para comenzar a crear una nueva habitación. Podrás agregar detalles, fotos y configurar disponibilidad.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Botón flotante para volver al dashboard -->
+            <div class="scroll-to-top">
+                <a href="#dashboard" class="btn-scroll-top">
+                    <i class="fas fa-arrow-up"></i>
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="../../js/anfitrion/indexAnfitrion.js"></script>
+</body>
+
+</html>

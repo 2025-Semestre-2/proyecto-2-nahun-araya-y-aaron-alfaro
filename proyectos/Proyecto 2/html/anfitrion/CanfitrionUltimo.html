@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Anfitrion</title>
+    
+    <link rel="stylesheet" href="../../css/todos/styles.css">
+    <link rel="stylesheet" href="../../css/todos/barraProgreso.css">
+    <link rel="stylesheet" href="../../css/todos/formularios.css">
+    <link rel="stylesheet" href="../../css/todos/mensajes.css">
+    <link rel="stylesheet" href="../../css/todos/selectPais.css">
+
+    <link rel="stylesheet" href="../../css/anfitrion/CAnfitrionUltimo.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/css/flag-icons.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="register-card">
+            <div class="progress-indicator">
+                <div class="progress-step completed">
+                    <div class="step-circle">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <span>Ubicación</span>
+                </div>
+                <div class="progress-step completed">
+                    <div class="step-circle">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <span>Espacio</span>
+                </div>
+                <div class="progress-step active">
+                    <div class="step-circle">3</div>
+                    <span>Datos</span>
+                </div>
+                <div class="progress-line"></div>
+            </div>
+            <div class="header">
+                <h1>Agregar Anfitrion</h1>
+                <p class="welcome">¡Ya estas a un paso de terminar!</p>
+                <p class="welcome">comparte con nosotros estos ultimos datos</p>
+            </div>
+            
+            <form id="register-form" class="register-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nombre" class="form-label">Nombre como empresa</label>
+                        <input type="text" id="nombre" class="form-input" required placeholder="Tu nombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="cedula" class="form-label">Cedula juridica</label>
+                        <input type="text" id="cedula" class="form-input" required placeholder="208450111">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email" class="form-label">Correo electrónico</label>
+                        <input type="email" id="email" class="form-input" required placeholder="ejemplo@correo.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="redes" class="form-label">Link redes</label>
+                        <div class="input-with-icon">
+                            <input type="url" id="googleMaps" class="form-input" required placeholder="https://linktr.ee/...">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="pais" class="form-label">País</label>
+                        <div class="country-selector">
+                            <div class="selected-country" id="selectedCountry">
+                                <div class="flag fi fi-cr"></div>
+                                <div class="country-info">
+                                    <div class="country-name">Costa Rica</div>
+                                </div>
+                                <div class="dropdown-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="countries-dropdown" id="countriesDropdown">
+                                <div class="search-box">
+                                    <input type="text" id="countrySearch" placeholder="Buscar país..." class="form-input">
+                                </div>
+                                <ul class="country-list" id="countryList">
+
+                                </ul>
+                            </div>
+                            <input type="hidden" id="pais" name="pais" value="CR">
+                            <input type="hidden" id="codigoPais" name="codigoPais" value="+506">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefono" class="form-label">Teléfono</label>
+                        <div class="phone-input-container">
+                            <div class="country-code-display" id="countryCodeDisplay">+506</div>
+                            <input type="tel" id="telefono" name="telefono" class="form-input phone-input" required placeholder="Número de contacto">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contrasena" class="form-label">Contraseña</label>
+                    <div class="password-input">
+                        <input type="password" id="contrasena" class="form-input" required minlength="6" placeholder="Mínimo 6 caracteres">
+                        <button type="button" class="toggle-password" id="togglePassword">
+                            <i class="far fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="input-hint">La contraseña debe tener al menos 6 caracteres</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmarContrasena" class="form-label">Confirmar Contraseña</label>
+                    <div class="password-input">
+                        <input type="password" id="confirmarContrasena" class="form-input" required minlength="6" placeholder="Repite tu contraseña">
+                        <button type="button" class="toggle-password" id="toggleConfirmPassword">
+                            <i class="far fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="checkbox-group">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" id="terms" required placeholder="Terminos y condiciones">
+                        <span class="checkmark"></span>
+                    </label>
+                    <span class="checkbox-label">
+                        Acepto los <a href="../../TerminosDeServicio.html" class="link">Términos y Condiciones</a> y la <a href="../../PoliticaDePrivacidad.html" class="link">Política de Privacidad</a>
+                    </span>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block">
+                    Crear cuenta
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+            
+            <div class="footer-links">
+                <p class="login-link">
+                    ¿Ya tienes cuenta? <a href="../../InicioSesion.html" class="link">Iniciar sesión</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="../../js/anfitrion/CAnfitrionUltimo.js"></script>
+</body>
+</html>

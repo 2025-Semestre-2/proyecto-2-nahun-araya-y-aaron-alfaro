@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Usuario</title>
+    <link rel="stylesheet" href="../../css/otro/styles.css">
+    <link rel="stylesheet" href="../../css/todos/mensajes.css">
+    <link rel="stylesheet" href="../../css/usuario/CrearUsuario.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/css/flag-icons.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="register-card">
+            <div class="header">
+                <h1>Crear usuario</h1>
+                <p class="welcome">¡Te damos la bienvenida usuario nuevo!</p>
+            </div>
+            
+            <form id="register-form" class="register-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="tipoIdentificacion" class="form-label">Tipo de Identificación</label>
+                        <select id="tipoIdentificacion" class="custom-select" required>
+                            <option value="">Seleccione...</option>
+                            <option value="cedula">Cédula</option>
+                            <option value="pasaporte">Pasaporte</option>
+                            <option value="dni">DNI</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="cedula" class="form-label">Número de identificación</label>
+                        <input type="text" id="cedula" class="form-input" required placeholder="000000000">   
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email" class="form-label">Correo electrónico</label>
+                        <input type="email" id="email" class="form-input" required placeholder="ejemplo@correo.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" id="nombre" class="form-input" required placeholder="Tu nombre">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="apellido1" class="form-label">Primer apellido</label>
+                        <input type="text" id="apellido1" class="form-input" required placeholder="Primer apellido">
+                    </div>
+                    <div class="form-group">
+                        <label for="apellido2" class="form-label">Segundo apellido</label>
+                        <input type="text" id="apellido2" class="form-input" placeholder="Segundo apellido (opcional)">
+                    </div>
+                </div>
+                
+<div class="form-row">
+    <div class="form-group">
+        <label for="pais" class="form-label">País</label>
+        <div class="country-selector">
+            <div class="selected-country" id="selectedCountry">
+                <div class="flag fi fi-cr"></div>
+                <div class="country-info">
+                    <div class="country-name">Costa Rica</div>
+                </div>
+                <div class="dropdown-arrow">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+            
+            <div class="countries-dropdown" id="countriesDropdown">
+                <div class="search-box">
+                    <input type="text" id="countrySearch" placeholder="Buscar país..." class="form-input">
+                </div>
+                <ul class="country-list" id="countryList">
+
+                </ul>
+            </div>
+            <input type="hidden" id="pais" name="pais" value="CR">
+            <input type="hidden" id="codigoPais" name="codigoPais" value="+506">
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="telefono" class="form-label">Teléfono</label>
+        <div class="phone-input-container">
+            <div class="country-code-display" id="countryCodeDisplay">+506</div>
+            <input type="tel" id="telefono" name="telefono" class="form-input phone-input" required placeholder="Número de contacto">
+        </div>
+    </div>
+</div>
+
+                <div class="form-group">
+                    <label class="form-label">Fecha de nacimiento</label>
+                    <div class="date-selector">
+                        <select id="dia" class="custom-select">
+                            <option value="">Día</option>
+                        </select>
+                        <select id="mes" class="custom-select">
+                            <option value="">Mes</option>
+                        </select>
+                        <select id="anio" class="custom-select">
+                            <option value="">Año</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contrasena" class="form-label">Contraseña</label>
+                    <div class="password-input">
+                        <input type="password" id="contrasena" class="form-input" required minlength="6" placeholder="Mínimo 6 caracteres">
+                        <button type="button" class="toggle-password" id="togglePassword">
+                            <i class="far fa-eye"></i>
+                        </button>
+                    </div>
+                    <div class="input-hint">La contraseña debe tener al menos 6 caracteres</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmarContrasena" class="form-label">Confirmar Contraseña</label>
+                    <div class="password-input">
+                        <input type="password" id="confirmarContrasena" class="form-input" required minlength="6" placeholder="Repite tu contraseña">
+                        <button type="button" class="toggle-password" id="toggleConfirmPassword">
+                            <i class="far fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="checkbox-group">
+                    <label class="custom-checkbox">
+                        <input type="checkbox" id="terms" required placeholder="Terminos y condiciones">
+                        <span class="checkmark"></span>
+                    </label>
+                    <span class="checkbox-label">
+                        Acepto los <a href="../../TerminosDeServicio.html" class="link">Términos y Condiciones</a> y la <a href="../../PoliticaDePrivacidad.html" class="link">Política de Privacidad</a>
+                    </span>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-block">
+                    Crear cuenta
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+            
+            <div class="footer-links">
+                <p class="login-link">
+                    ¿Ya tienes cuenta? <a href="../../InicioSesion.html" class="link">Iniciar sesión</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="../../js/usuario/CUsuario.js"></script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Habitaciones</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ICONOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- SWIPER -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../css/anfitrion/CRUDhabitacion.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <header class="edit-header">
+            <div>
+                <h1 id="titulo-pagina">Editar Habitación</h1>
+                <p class="room-id" id="room-info"></p>
+            </div>
+
+            <div class="header-actions">
+                <button class="btn btn-secondary" id="btn-volver">
+                    <i class="fas fa-arrow-left"></i> Volver
+                </button>
+                <button class="btn btn-danger" id="btn-eliminar" style="display: none;">
+                    <i class="fas fa-trash"></i> Eliminar
+                </button>
+            </div>
+        </header>
+
+        <div id="mensaje-container"></div>
+
+        <!-- IMÁGENES -->
+        <section class="images-section">
+            <h2 class="section-title">
+                <i class="fas fa-images"></i> Imágenes
+            </h2>
+
+            <div class="main-images-swiper swiper">
+                <div class="swiper-wrapper" id="main-images-wrapper"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="thumb-images-swiper swiper">
+                <div class="swiper-wrapper" id="thumb-images-wrapper"></div>
+            </div>
+
+            <label class="upload-zone">
+                <input type="file" id="image-upload" hidden multiple accept="image/*">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <p class="upload-text">Agregar imágenes</p>
+                <p class="upload-subtext">JPG, PNG o WebP · máx 5MB</p>
+            </label>
+        </section>
+
+        <!-- FORMULARIO -->
+        <section class="form-section">
+            <h2 class="section-title">
+                <i class="fas fa-edit"></i> Información
+            </h2>
+
+            <form id="form-habitacion">
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="edit-room-name">Nombre *</label>
+                        <input type="text" id="edit-room-name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="edit-room-type">Tipo *</label>
+                        <select id="edit-room-type" required>
+                            <option value="">Seleccionar</option>
+                            <option value="suite">Suite</option>
+                            <option value="doble">Doble</option>
+                            <option value="individual">Individual</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Capacidad</label>
+                        <div class="input-group">
+                            
+                            <div class="input-item">
+                                <i class="fas fa-user"></i>
+                                <input type="number" id="edit-max-adults" min="1" value="2">
+                                <span>Adultos</span>
+                            </div>
+
+                            <div class="input-item">
+                                <i class="fas fa-bed"></i>
+                                <input type="number" id="edit-bed-count" min="1" value="1">
+                                <span>Camas</span>
+                            </div>
+
+                            <div class="input-item">
+                                <i class="fas fa-bath"></i>
+                                <input type="number" id="edit-bathroom-count" min="1" step="0.5" value="1">
+                                <span>Baños</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="edit-room-description">Descripción</label>
+                    <textarea id="edit-room-description" maxlength="500" placeholder="Describe la habitación..."></textarea>
+                    <div class="char-counter" id="edit-char-counter">0/500</div>
+                </div>
+
+                <!-- PRECIO -->
+                <div class="price-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-dollar-sign"></i> Precio
+                    </h2>
+
+                    <div class="price-input-wrapper">
+                        <span class="currency">$</span>
+                        <input type="number" id="edit-room-price" min="1" step="0.01" placeholder="100.00">
+                        <span class="period">/ noche</span>
+                    </div>
+                </div>
+
+                <!-- ESTADO -->
+                <div class="status-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-toggle-on"></i> Estado
+                    </h2>
+
+                    <div class="status-options">
+                        <label class="status-option">
+                            <input type="radio" name="room-status" value="available" checked>
+                            <span class="status-label available">Disponible</span>
+                        </label>
+
+                        <label class="status-option">
+                            <input type="radio" name="room-status" value="booked">
+                            <span class="status-label booked">Reservada</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- ACTIVIDADES RECREATIVAS -->
+                <div class="activities-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-hiking"></i> Actividades Recreativas
+                    </h2>
+                    
+                    <p class="section-subtitle">Selecciona las actividades que ofrece esta habitación</p>
+                    
+                    <div class="activities-grid" id="activities-grid">
+                        <!-- Las actividades se cargarán dinámicamente aquí -->
+                    </div>
+                    
+                    <div class="add-activity-section">
+                        <button type="button" class="btn btn-outline" id="btn-agregar-actividad">
+                            <i class="fas fa-plus"></i> Agregar Nueva Actividad
+                        </button>
+                    </div>
+                </div>
+
+                <!-- ACCIONES -->
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="btn-cancelar">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary" id="btn-guardar">
+                        <i class="fas fa-save"></i> Guardar Habitación
+                    </button>
+                </div>
+
+            </form>
+        </section>
+
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="../../js/anfitrion/CRUDhabitacion.js"></script>
+
+</body>
+
+</html>
