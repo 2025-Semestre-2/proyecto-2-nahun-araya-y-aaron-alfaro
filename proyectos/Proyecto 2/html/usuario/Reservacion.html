@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Reservas y Facturación</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/usuario/Reservacion.css">
+</head>
+<body>
+    <!-- Header Principal -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container" onclick="window.location.href='../../index.html'">
+                    <i class="fas fa-hotel"></i>
+                    <h1>Sistema de Reservas</h1>
+                </div>
+                <div class="user-info">
+                    <div class="user-details">
+                        <h3 id="nombre-usuario">Bienvenido, Usuario</h3>
+                        <p id="email-usuario">Reserva o factura tus estancias</p>
+                    </div>
+                    <div class="user-avatar">
+                        <i class="fas fa-user"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mensaje de bienvenida -->
+    <div class="container">
+        <div class="welcome-section">
+            <h2 id="titulo-reserva">Completa tu reserva</h2>
+            <p id="descripcion-reserva">Llena los datos para confirmar tu estadía</p>
+        </div>
+    </div>
+
+    <!-- Sistema de Pestañas -->
+    <div class="container">
+        <div class="tab-system">
+            <div class="tab-header">
+                <button class="tab-button active" data-tab="reservar">
+                    <i class="fas fa-calendar-check"></i>
+                    Reservar Habitación
+                </button>
+                <button class="tab-button" data-tab="facturar">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                    Facturar Reserva
+                </button>
+                <button class="tab-button" data-tab="mis-reservas">
+                    <i class="fas fa-history"></i>
+                    Mis Reservas
+                </button>
+            </div>
+
+            <!-- PESTAÑA RESERVAR -->
+            <div class="tab-content active" id="reservar">
+                <div class="form-container">
+                    <!-- DATOS PERSONALES -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-user-circle"></i> Datos Personales</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Nombre Completo *</label>
+                                <input type="text" class="form-control" id="nombre" placeholder="Juan Pérez">
+                            </div>
+                            <div class="form-group">
+                                <label>Email *</label>
+                                <input type="email" class="form-control" id="email" placeholder="juan@ejemplo.com">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Teléfono *</label>
+                                <input type="tel" class="form-control" id="telefono" placeholder="+506 6308 4229">
+                            </div>
+                            <div class="form-group">
+                                <label>Documento de Identidad *</label>
+                                <input type="text" class="form-control" id="documento" placeholder="208450111">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DATOS DE LA RESERVA -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-calendar-alt"></i> Datos de la Reserva</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Fecha de Entrada *</label>
+                                <input type="date" class="form-control" id="fecha-entrada">
+                            </div>
+                            <div class="form-group">
+                                <label>Fecha de Salida *</label>
+                                <input type="date" class="form-control" id="fecha-salida">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Número de Huéspedes *</label>
+                                <select class="form-control" id="huespedes">
+                                    <option value="1">1 Huésped</option>
+                                    <option value="2">2 Huéspedes</option>
+                                    <option value="3">3 Huéspedes</option>
+                                    <option value="4">4 Huéspedes</option>
+                                    <option value="5">5+ Huéspedes</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Tipo de Habitación</label>
+                                <select class="form-control" id="tipo-habitacion">
+                                    <option value="individual">Individual</option>
+                                    <option value="doble">Doble</option>
+                                    <option value="suite">Suite</option>
+                                    <option value="familiar">Familiar</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Forma de Pago</label>
+                                <select class="form-control" id="forma-pago">
+                                    <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+                                    <option value="efectivo">Efectivo</option>
+                                    <option value="transferencia">Transferencia Bancaria</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INFORMACIÓN DE LA HABITACIÓN SELECCIONADA -->
+                <div class="room-selected-container" id="room-selected-container" style="display: none;">
+                    <h3><i class="fas fa-bed"></i> Habitación Seleccionada</h3>
+                    <div class="selected-room-info">
+                        <div class="selected-room-image">
+                            <img id="selected-room-img" src="" alt="Habitación seleccionada">
+                        </div>
+                        <div class="selected-room-details">
+                            <h4 id="selected-room-name"></h4>
+                            <p id="selected-room-desc"></p>
+                            <div class="room-specs">
+                                <span><i class="fas fa-users"></i> <span id="selected-room-capacity"></span></span>
+                                <span><i class="fas fa-bed"></i> <span id="selected-room-beds"></span></span>
+                                <span><i class="fas fa-bath"></i> <span id="selected-room-baths"></span></span>
+                            </div>
+                            <div class="room-services">
+                                <h5>Servicios incluidos:</h5>
+                                <div id="selected-room-services"></div>
+                            </div>
+                        </div>
+                        <div class="selected-room-price">
+                            <div class="price-display">
+                                <span class="price-label">Precio por noche:</span>
+                                <span class="price-amount" id="selected-room-price-night"></span>
+                            </div>
+                            <div class="price-display">
+                                <span class="price-label">Estadía total:</span>
+                                <span class="price-amount" id="selected-room-price-total"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- HABITACIONES DISPONIBLES -->
+                <h2 class="section-title">
+                    <i class="fas fa-bed"></i> Habitaciones Disponibles
+                </h2>
+                <div class="rooms-grid" id="habitaciones-disponibles">
+                    <!-- Las habitaciones se cargarán dinámicamente -->
+                </div>
+
+                <!-- RESUMEN DE RESERVA -->
+                <div class="resumen-container" id="resumen-reserva" style="display: none;">
+                    <div class="resumen-header">
+                        <h3><i class="fas fa-receipt"></i> Resumen de Reserva</h3>
+                        <button class="btn btn-secondary" id="limpiar-reserva">
+                            <i class="fas fa-times"></i> Limpiar
+                        </button>
+                    </div>
+                    <div class="resumen-grid">
+                        <div class="resumen-item">
+                            <span class="resumen-label">Habitación:</span>
+                            <span class="resumen-value" id="res-habitacion">-</span>
+                        </div>
+                        <div class="resumen-item">
+                            <span class="resumen-label">Check-in:</span>
+                            <span class="resumen-value" id="res-checkin">-</span>
+                        </div>
+                        <div class="resumen-item">
+                            <span class="resumen-label">Check-out:</span>
+                            <span class="resumen-value" id="res-checkout">-</span>
+                        </div>
+                        <div class="resumen-item">
+                            <span class="resumen-label">Duración:</span>
+                            <span class="resumen-value" id="res-duracion">-</span>
+                        </div>
+                        <div class="resumen-item">
+                            <span class="resumen-label">Huéspedes:</span>
+                            <span class="resumen-value" id="res-huespedes">-</span>
+                        </div>
+                        <div class="resumen-item">
+                            <span class="resumen-label">Precio por noche:</span>
+                            <span class="resumen-value" id="res-precio-noche">-</span>
+                        </div>
+                        <div class="resumen-item">
+                            <span class="resumen-label">Subtotal:</span>
+                            <span class="resumen-value" id="res-subtotal">-</span>
+                        </div>
+                        <div class="resumen-item">
+                            <span class="resumen-label">IVA (13%):</span>
+                            <span class="resumen-value" id="res-iva">-</span>
+                        </div>
+                    </div>
+                    <div class="total-section">
+                        <div>
+                            <div class="total-label">Total a pagar:</div>
+                            <div class="total-desc">Impuestos incluidos</div>
+                        </div>
+                        <div class="total-amount" id="res-total">₡0.00</div>
+                    </div>
+                    <div class="resumen-actions">
+                        <button class="btn btn-primary btn-block" id="confirmar-reserva">
+                            <i class="fas fa-check-circle"></i> Confirmar Reserva
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PESTAÑA FACTURAR -->
+            <div class="tab-content" id="facturar">
+                <div class="form-container">
+                    <!-- BUSCAR RESERVA -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-search"></i> Buscar Reserva</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Número de Reserva</label>
+                                <input type="text" class="form-control" id="num-reserva" placeholder="RES-123456">
+                            </div>
+                            <div class="form-group">
+                                <label>Documento del Huésped</label>
+                                <input type="text" class="form-control" id="doc-huesped" placeholder="INE/Pasaporte">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" id="buscar-reserva">
+                            <i class="fas fa-search"></i> Buscar Reserva
+                        </button>
+                    </div>
+
+                    <!-- DATOS DE FACTURACIÓN -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-file-invoice"></i> Datos de Facturación</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Razón Social (si aplica)</label>
+                                <input type="text" class="form-control" id="razon-social" placeholder="Empresa S.A.">
+                            </div>
+                            <div class="form-group">
+                                <label>Cédula o Identificación *</label>
+                                <input type="text" class="form-control" id="identificacion" placeholder="Número de identificación">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Correo Electrónico para Factura</label>
+                                <input type="email" class="form-control" id="email-factura" placeholder="factura@ejemplo.com">
+                            </div>
+                            <div class="form-group">
+                                <label>Teléfono</label>
+                                <input type="tel" class="form-control" id="telefono-factura" placeholder="+506 8888 8888">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Método de Pago</label>
+                                <select class="form-control" id="metodo-pago">
+                                    <option value="tarjeta">Tarjeta de Crédito/Débito</option>
+                                    <option value="efectivo">Efectivo</option>
+                                    <option value="transferencia">Transferencia Bancaria</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DETALLES DE FACTURACIÓN -->
+                <div class="resumen-container" id="detalles-facturacion" style="display: none;">
+                    <div class="resumen-header">
+                        <h3><i class="fas fa-file-invoice-dollar"></i> Detalles de Facturación</h3>
+                        <span class="resumen-value" id="estado-factura">
+                            <i class="fas fa-clock"></i> Pendiente de pago
+                        </span>
+                    </div>
+                    <div class="resumen-grid">
+                        <div class="resumen-item">
+                            <span class="resumen-label">N° Reserva:</span>
+                            <span class="resumen-value" id="fact-reserva">-</span>
+                        </div>
+                        <div class="resumen-item">
+                            <span class="resumen-label">Huésped:</span>
+                            <span class="resumen-value" id="fact-huesped">-</span>
+                        </div>
+                        <div class="resumen-item">
+                            <span class="resumen-label">Habitación:</span>
+                            <span class="resumen-value" id="fact-habitacion">-</span>
+                        </div>
+                        <div class="resumen-item">
+                            <span class="resumen-label">Check-in:</span>
+                            <span class="resumen-value" id="fact-checkin">-</span>
+                        </div>
+                        <div class="resumen-item">
+                            <span class="resumen-label">Check-out:</span>
+                            <span class="resumen-value" id="fact-checkout">-</span>
+                        </div>
+                        <div class="resumen-item">
+                            <span class="resumen-label">Noches:</span>
+                            <span class="resumen-value" id="fact-noches">-</span>
+                        </div>
+                        <div class="resumen-item">
+                            <span class="resumen-label">Subtotal:</span>
+                            <span class="resumen-value" id="fact-subtotal">-</span>
+                        </div>
+                        <div class="resumen-item">
+                            <span class="resumen-label">IVA (13%):</span>
+                            <span class="resumen-value" id="fact-iva">-</span>
+                        </div>
+                    </div>
+                    <div class="total-section">
+                        <div class="total-label">Total a facturar:</div>
+                        <div class="total-amount" id="fact-total">₡0.00</div>
+                    </div>
+                    <div class="resumen-actions">
+                        <button class="btn btn-secondary" id="cancelar-factura">
+                            <i class="fas fa-times"></i> Cancelar
+                        </button>
+                        <button class="btn btn-success" id="generar-factura">
+                            <i class="fas fa-file-pdf"></i> Generar Factura
+                        </button>
+                        <button class="btn btn-primary" id="pagar-factura">
+                            <i class="fas fa-credit-card"></i> Pagar Ahora
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PESTAÑA MIS RESERVAS -->
+            <div class="tab-content" id="mis-reservas">
+                <div class="table-container">
+                    <table class="factura-table">
+                        <thead>
+                            <tr>
+                                <th>N° Reserva</th>
+                                <th>Habitación</th>
+                                <th>Check-in</th>
+                                <th>Check-out</th>
+                                <th>Estado</th>
+                                <th>Total</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historial-reservas">
+                            <!-- Las reservas se cargarán dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-actions">
+                    <button class="btn btn-primary" id="actualizar-reservas">
+                        <i class="fas fa-sync-alt"></i> Actualizar Historial
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE CONFIRMACIÓN -->
+    <div class="modal-overlay" id="modalConfirmacion">
+        <div class="modal">
+            <div class="modal-header">
+                <i class="fas fa-check-circle modal-icon"></i>
+                <h3 id="modalTitulo">Confirmar Reserva</h3>
+                <p id="modalMensaje">¿Estás seguro de realizar esta acción?</p>
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="cancelarModal">Cancelar</button>
+                <button class="btn btn-primary" id="confirmarModal">Confirmar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DE PAGO -->
+    <div class="modal-overlay" id="modalPago">
+        <div class="modal">
+            <div class="modal-header">
+                <i class="fas fa-credit-card modal-icon"></i>
+                <h3>Procesar Pago</h3>
+                <p>Total a pagar: <span id="modalTotalPago" class="modal-total">₡0.00</span></p>
+            </div>
+            <div class="form-group">
+                <label>Número de Tarjeta</label>
+                <input type="text" class="form-control" id="numero-tarjeta" placeholder="1234 5678 9012 3456" maxlength="19">
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Fecha de Expiración</label>
+                    <input type="text" class="form-control" id="fecha-expiracion" placeholder="MM/AA">
+                </div>
+                <div class="form-group">
+                    <label>CVV</label>
+                    <input type="password" class="form-control" id="cvv-tarjeta" placeholder="123" maxlength="3">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Nombre en la Tarjeta</label>
+                <input type="text" class="form-control" id="nombre-tarjeta" placeholder="JUAN PEREZ">
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="cancelarPago">Cancelar</button>
+                <button class="btn btn-success" id="procesarPago">
+                    <i class="fas fa-lock"></i> Pagar Ahora
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DETALLES RESERVA -->
+    <div class="modal-overlay" id="modalDetalles">
+        <div class="modal modal-large">
+            <div class="modal-header">
+                <i class="fas fa-info-circle modal-icon"></i>
+                <h3 id="modalDetallesTitulo">Detalles de Reserva</h3>
+                <button class="btn-close-modal" id="cerrarDetalles">&times;</button>
+            </div>
+            <div class="modal-body" id="modalDetallesContenido">
+                <!-- Contenido dinámico -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2024 Sistema de Reservas - Costa Rica. Todos los derechos reservados.</p>
+                <p class="footer-links">
+                    <a href="#">Términos y Condiciones</a> | 
+                    <a href="#">Política de Privacidad</a> | 
+                    <a href="#">Ayuda</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../../js/usuario/Reservacion.js"></script>
+</body>
+</html>
